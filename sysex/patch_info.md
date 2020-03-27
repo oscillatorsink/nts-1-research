@@ -53,7 +53,7 @@ To request the details of a user program (oscillator or fx) the librarian sends 
 | 5      | 1      | `0x57`   | "Device ID" identified during "hello" stage (may indicate NTS-1 specifically)
 | 6      | 1      | `0x19`   | Slot request
 | 7      | 1      | `0xtt`   | Slot type (see below)
-| 8      | 1      | `0xss`   | Slot number 
+| 8      | 1      | `0xss`   | Slot number (0x00 = slot 1)
 | 9      | 1      | `0xF7`   | End sysex
 
 The _Slot type_ indicates what sort of user program we're referring to (osc, mod, delay, reverb). This seems to line up with the enum in `/platform/nutekt-digital/inc/userprg.h` from the 'logue SDK.
@@ -64,3 +64,8 @@ The _Slot type_ indicates what sort of user program we're referring to (osc, mod
 | 2     | Delay
 | 3     | Reverb
 | 4     | Oscillator
+
+So to get the user delay in slot 3 with the NTS-1 receiving on MIDI channel 2 we'd send: `F0 42 31 00 01 57 19 02 02 F7`
+The user oscillator in slot 11 with the NTS-1 receiving on MIDI channel 3 we'd send: `F0 42 32 00 01 57 19 04 0A F7`
+
+Interestingly, despite there only being 8 slots each for delay and reverb on the NTS-1, version 1.0.0 of the Librarian still asks for slots 9-16. Nobody's perfect.
