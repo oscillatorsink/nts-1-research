@@ -51,8 +51,16 @@ To request the details of a user program (oscillator or fx) the librarian sends 
 | 2      | 1      | `0x3n`   | Message "type", where `n` is the MIDI channel identifid during the "hello" stage above
 | 3      | 2      | `0x00 01` | ???
 | 5      | 1      | `0x57`   | "Device ID" identified during "hello" stage (may indicate NTS-1 specifically)
-| 6      | 1      | `0x19`   | ??? - Slot request
+| 6      | 1      | `0x19`   | Slot request
 | 7      | 1      | `0xtt`   | Slot type (see below)
 | 8      | 1      | `0xss`   | Slot number 
 | 9      | 1      | `0xF7`   | End sysex
 
+The _Slot type_ indicates what sort of user program we're referring to (osc, mod, delay, reverb). This seems to line up with the enum in `/platform/nutekt-digital/inc/userprg.h` from the 'logue SDK.
+
+| Value | Meaning
+| ----- | -------
+| 1     | Mod
+| 2     | Delay
+| 3     | Reverb
+| 4     | Oscillator
