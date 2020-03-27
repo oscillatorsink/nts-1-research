@@ -18,7 +18,7 @@ Upon connecting the librarian sends the following to check that the NTS-1 is pre
 | 4      | 1      | `0x02`   | ???
 | 5      | 1      | `0xF7`   | End Sysex
 
-\* actually by convention this is probably in the butwise form `0b xttt ccc` where `ttt` is the type and `cccc` is the channel?..
+\* actually by convention this is probably in the bitwise form `0b xttt ccc` where `ttt` is the type and `cccc` is the channel?..
 
 ### Respond hello
 The NTS-1 responds thus:
