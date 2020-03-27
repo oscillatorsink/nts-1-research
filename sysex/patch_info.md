@@ -65,7 +65,10 @@ The _Slot type_ indicates what sort of user program we're referring to (osc, mod
 | 3     | Reverb
 | 4     | Oscillator
 
-So to get the user delay in slot 3 with the NTS-1 receiving on MIDI channel 2 we'd send: `F0 42 31 00 01 57 19 02 02 F7`
-The user oscillator in slot 11 with the NTS-1 receiving on MIDI channel 3 we'd send: `F0 42 32 00 01 57 19 04 0A F7`
+So to get the user delay in slot 3 with the NTS-1 receiving on MIDI channel 2 we'd send: 
+`F0 42 31 00 01 57 19 02 02 F7`
+
+The user oscillator in slot 11 with the NTS-1 receiving on MIDI channel 3 we'd send: 
+`F0 42 32 00 01 57 19 04 0A F7`
 
 Interestingly, despite there only being 8 slots each for delay and reverb on the NTS-1, version 1.0.0 of the Librarian still asks for slots 9-16. Nobody's perfect.
