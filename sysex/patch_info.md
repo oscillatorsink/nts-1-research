@@ -2,6 +2,21 @@
 ## Caveat
 This is a work in progress and almost certainly contains unknowns and errors. This research was conducted on an NTS-1 running firmware 1.10 and v1.0.0 of the Librarian software.
 
+## General observations
+### One 0x00 in 15
+It looks like, after the first byte of (all?) messages (so that's byte 3 onwards), every 15 bytes a single nul (0x00) byte is inserted into the message. It might be for checking that the message isn't corrupted maybe? It's a bit weird. You can see it here:
+
+```
+Offset(h) 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+
+00000000  F0 42 30 00 01 57 49 01 00 00 00 01 03 00 01 01  ðB0..WI.........
+00000010  00 44 00 75 6B 65 00 00 00 00 00 00 06 00 00 43  .D.uke.........C
+00000020  72 75 00 73 68 65 72 00 00 00 00 00 00 00 00 00  ru.sher.........
+00000030  00 00 00 00 F7                                   ....÷
+```
+
+You can see it at offsets `0x12 0x22 0x32`; it's especially clear where it's breaking up the name of the developer and effect.
+
 ## Hello message
 
 ### Request hello
